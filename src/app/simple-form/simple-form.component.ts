@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   template: `
     <div>
       <input #myInput type="text"/>
-      <button (click)="onClick(myInput.value)" (mouseover)="myInput.value=(null)" (mouseout)="onHoverout()">Click me!</button>
+      <button (click)="onClick($event,myInput.value)">Click me!</button>
     </div>
   `,
   styles: [
@@ -13,8 +13,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SimpleFormComponent implements OnInit {
 
-  onClick(value) {
-    console.log('ggg clicked',value)
+  onClick($event,value) {
+    console.log('ggg clicked',$event, value)
   }
 
   onHover() {
