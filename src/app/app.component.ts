@@ -4,15 +4,10 @@ import { Component, Inject } from '@angular/core';
   selector: 'app-root',
   template: `
     <div>
-      <app-simple-form></app-simple-form>
-      <hr>
-      <ul>
-      <li *ngFor='let message of mail.messages'>{{message}}</li>
-      </ul>
-      <hr>
-      {{mail.message}}
-      <hr>
-      {{api}}
+      <app-simple-form 
+      *ngFor='let message of mail.messages'
+      [message] = "message"
+      ></app-simple-form>
   </div>
   `
 })

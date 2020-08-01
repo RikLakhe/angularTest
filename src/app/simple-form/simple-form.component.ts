@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-simple-form',
   template: `
     <div>
-      <input #myInput type="text"/>
+    {{message}}
+      <input #myInput type="text" [(ngModel)]="message"/>
       <button (click)="onClick($event,myInput.value)">Click me!</button>
     </div>
   `,
@@ -12,6 +13,8 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class SimpleFormComponent implements OnInit {
+
+  @Input() message;
 
   onClick($event,value) {
     console.log('ggg clicked',$event, value)
@@ -24,7 +27,9 @@ export class SimpleFormComponent implements OnInit {
   onHoverout() {
     console.log('gggg hove out')
   }
-  constructor() { }
+  constructor() {
+    setInterval(()=> this.message = Math.random().toString(),10000)
+   }
 
   ngOnInit(): void {
   }
