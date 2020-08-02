@@ -1,5 +1,4 @@
 import { Component, Inject } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -14,12 +13,8 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
       ></app-simple-form> -->
 <ul>
 <app-habit-list *ngFor="let habit of habits" [habit]="habit"></app-habit-list>
-<form [formGroup]="habitForm" (ngSubmit)="onSubmit(habitForm.value)">
-<input type="text" placeholder="Title" formControlName="title"/>
-<button type="submit">Add</button>
-</form>
 </ul>
-      
+      <app-habit-form (addHabit)="onAddHabit($event)"></app-habit-form>
   </div>
   `, styles: [
     `app-simple-form{
@@ -30,22 +25,17 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 export class AppComponent {
 
-  habitForm; 
-
   habits=[
     {id:1,title:'check in with parenst once a week'},
     {id:2,title:'check in with parenst once  2 week'},
     {id:3,title:'check in with parenst once  3 week'},
     {id:4,title:'check in with parenst once  4 week'},
   ]
-  
-  onSubmit(newHabit){
-      const id = this.habits.length +1;
-      newHabit.id = id;
 
-      this.habits.push(newHabit)
-
-      this.habitForm.reset();
+  onAddHabit(newHabit){
+    const id = this.habits.length +1;
+    newHabit.id = id;
+    this.habits.push(newHabit)
   }
 
   onUpdate(id,text) {
@@ -55,11 +45,5 @@ export class AppComponent {
 
   constructor(
     @Inject('mail') private mail,
-    @Inject('api') private api,
-    private formBuilder: FormBuilder
-  ) { 
-    this.habitForm = this.formBuilder.group({
-      title: ''
-    })
-  }
+    @Inject('api') private api){}
 }
