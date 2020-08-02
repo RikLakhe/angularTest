@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { SimpleFormComponent } from './simple-form/simple-form.component';
-import { MailService } from "./mail.service"
+import { MailService } from "./services/mail.service"
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HabitListComponent } from './habit-list/habit-list.component';
 import { HabitFormComponent } from './habit-form/habit-form.component';
