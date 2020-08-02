@@ -1,12 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-simple-form',
   template: `
     <div>
-    {{message}}
       <input #myInput type="text" [(ngModel)]="message"/>
-      <button (click)="onClick($event,myInput.value)">Click me!</button>
+      <button (click)="update.emit({text:message})">Click me!</button>
     </div>
   `,
   styles: [
@@ -15,6 +14,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class SimpleFormComponent implements OnInit {
 
   @Input() message;
+
+  @Output() update = new EventEmitter();
 
   onClick($event,value) {
     console.log('ggg clicked',$event, value)
@@ -28,7 +29,7 @@ export class SimpleFormComponent implements OnInit {
     console.log('gggg hove out')
   }
   constructor() {
-    setInterval(()=> this.message = Math.random().toString(),10000)
+    // setInterval(()=> this.message = Math.random().toString(),10000)
    }
 
   ngOnInit(): void {
