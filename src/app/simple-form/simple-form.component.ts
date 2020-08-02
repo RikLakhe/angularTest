@@ -25,6 +25,10 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
     border : none;
     padding: 5px;
   }
+
+  button:hover{
+    border-bottom: 2px solid black;
+  }
   `]
 })
 export class SimpleFormComponent implements OnInit {
