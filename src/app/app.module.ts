@@ -1,5 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 
 import {AppComponent} from './app.component';
 import {SimpleFormComponent} from './simple-form/simple-form.component';
@@ -8,16 +9,29 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HabitListComponent} from './habit-list/habit-list.component';
 import {HabitFormComponent} from './habit-form/habit-form.component';
 import {HttpClientModule} from '@angular/common/http';
+import {HomeComponent} from './home/home.component';
+import {AboutComponent} from './about/about.component';
+import {HabitDashboardComponent} from './habit-dashboard/habit-dashboard.component';
+
+const routes: Routes = [
+  {path: 'home', component: HomeComponent},
+  {path: 'about', component: AboutComponent},
+  {path: 'dashboard', component: HabitDashboardComponent},
+  {path: '', redirectTo: '/home', pathMatch: 'full'}
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     SimpleFormComponent,
     HabitListComponent,
-    HabitFormComponent
+    HabitFormComponent,
+    HomeComponent,
+    AboutComponent,
+    HabitDashboardComponent,
   ],
   imports: [
-    BrowserModule, HttpClientModule, FormsModule, ReactiveFormsModule
+    BrowserModule, RouterModule.forRoot(routes), HttpClientModule, FormsModule, ReactiveFormsModule
   ],
   providers: [
     {provide: 'mail', useClass: MailService},
@@ -25,5 +39,6 @@ import {HttpClientModule} from '@angular/common/http';
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {
 }
