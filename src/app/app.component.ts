@@ -1,6 +1,8 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {HabitService} from './services/habit.service';
+import {Habit} from './habit';
+import {map, switchMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -27,10 +29,10 @@ import {HabitService} from './services/habit.service';
 
 export class AppComponent implements OnInit {
 
-  habits: Observable<any>;
+  habits: Observable<Habit[]>;
 
   onAddHabit(newHabit) {
-    this.habitService.addHabit(newHabit)
+    this.habitService.addHabit(newHabit).subscribe();
   }
 
   onUpdate(id, text) {
@@ -46,6 +48,18 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.habits = this.habitService.getHabits()
+    this.habits = this.habitService.refetch.pipe(
+      switchMap(()=>this.habitService.getHabits())
+    )
+    // this.habits = this.habitService.getHabits().pipe(map(habits => {
+    //   return habits.map(habit => {
+    //     habit.steak = habit.count > 5;
+    //     return habit;
+    //   });
+    // }));
+
+    // this.habitService.getHabits().subscribe((data) => {
+    //   this.habits = data.data.pipe
+    // });
   }
 }

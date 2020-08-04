@@ -1,18 +1,26 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
+import {Habit} from '../habit';
 
 @Component({
   selector: 'app-habit-list',
   template: `
-  <li>{{habit.title}}</li>
+    <li
+        [ngClass]="{red : habit.steak}"
+    >{{habit.title}} (Count : {{habit.count}})</li>
   `,
-  styles: [
-  ]
+  styles: [`
+  .red{
+    color: red;
+    font-weight: bold;
+  }
+  `]
 })
 export class HabitListComponent {
 
-  @Input() habit;
+  @Input() habit: Habit;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

@@ -1,29 +1,30 @@
 import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {Observable, throwError, Subject, BehaviorSubject} from 'rxjs';
+import {tap} from 'rxjs/operators';
+import {Habit} from '../habit';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class HabitService {
+  private refetchSubject = new BehaviorSubject(null);
 
-  habits = [
-    {id: 0, title: 'check in with parenst once a week'},
-    {id: 1, title: 'check in with parenst once  2 week'},
-    {id: 2, title: 'check in with parenst once  3 week'},
-    {id: 3, title: 'check in with parenst once  4 week'},
-  ];
+  constructor(private http: HttpClient) {
+  }
+
+  get refetch() {
+    return this.refetchSubject.asObservable();
+  }
+
+  getHabits(): Observable<Habit[]> {
+    return this.http.get<Habit[]>('http://localhost:3001/api/v1/habit');
+  }
 
   addHabit(newHabit) {
-    const id = this.habits.length + 1;
-    newHabit.id = id;
-    this.habits.push(newHabit);
-  }
-
-  getHabits(): Observable<any> {
-    return of(this.habits);
-  }
-
-  constructor() {
+    return this.http
+      .post<Habit[]>('http://localhost:3001/api/v1/habit', newHabit)
+      .pipe(tap(() => this.refetchSubject.next(null)));
   }
 }
