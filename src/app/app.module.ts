@@ -12,11 +12,13 @@ import {HttpClientModule} from '@angular/common/http';
 import {HomeComponent} from './home/home.component';
 import {AboutComponent} from './about/about.component';
 import {HabitDashboardComponent} from './habit-dashboard/habit-dashboard.component';
+import { AboutdetailComponent } from './aboutdetail/aboutdetail.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
-  {path: 'about', component: AboutComponent},
   {path: 'dashboard', component: HabitDashboardComponent},
+  {path: 'about', component: AboutComponent},
+  {path: 'about/:id', component: AboutdetailComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'}
 ];
 
@@ -29,6 +31,7 @@ const routes: Routes = [
     HomeComponent,
     AboutComponent,
     HabitDashboardComponent,
+    AboutdetailComponent,
   ],
   imports: [
     BrowserModule, RouterModule.forRoot(routes), HttpClientModule, FormsModule, ReactiveFormsModule
