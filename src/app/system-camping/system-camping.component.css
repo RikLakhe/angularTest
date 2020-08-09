@@ -1,0 +1,57 @@
+.camping-nav{
+  color: #ffffff;
+  display: flex;
+  margin-top: 10px;
+}
+
+.camping-nav-li{
+  list-style: none;
+ margin: 20px;
+  }
+
+.camping-nav-a{
+  color: #000000;
+  text-decoration: none;
+  border: 1px solid #397939;
+  background-color: #6fd66f;
+  width: 150px;
+  padding :20px
+}
+
+.camping-nav-a:hover{
+  color: #ffffff;
+  border: 1px solid #1b3b1b;
+  background-color: #397939;
+}
+
+.camping-active{
+  color: #ffffff;
+  border: 1px solid #1b3b1b;
+  background-color: #397939;
+}
+
+.camping-nav-sub{
+  display: flex;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.camping-nav-sub li{
+  list-style: none;
+  margin: 10px;
+}
+
+.camping-nav-sub li a{
+  text-decoration: none;
+  color: black;
+  width: 200px;
+  height: 100px;
+  padding: 20px;
+}
+
+.camping-sub-active{
+  color: white;
+  background-color: saddlebrown;
+  border: 1px sandybrown solid;
+}
+

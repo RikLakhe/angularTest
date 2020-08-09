@@ -13,13 +13,28 @@ import {HomeComponent} from './home/home.component';
 import {AboutComponent} from './about/about.component';
 import {HabitDashboardComponent} from './habit-dashboard/habit-dashboard.component';
 import { AboutdetailComponent } from './aboutdetail/aboutdetail.component';
+import { SystemCampingComponent } from './system-camping/system-camping.component';
+import { SystemCampingInfoComponent } from './system-camping-info/system-camping-info.component';
+import { SystemCampingItemComponent } from './system-camping-item/system-camping-item.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'dashboard', component: HabitDashboardComponent},
   {path: 'about', component: AboutComponent},
   {path: 'about/:id', component: AboutdetailComponent},
-  {path: '', redirectTo: '/home', pathMatch: 'full'}
+  {
+    path: 'system/:id',
+    component: SystemCampingComponent,
+    children:[{
+      path:'info',
+      component: SystemCampingInfoComponent
+    },{
+      path:'item',
+      component: SystemCampingItemComponent
+    }]
+  },
+  {path: '', redirectTo: '/system', pathMatch: 'full'},
+  {path: 'system', redirectTo: '/system/1', pathMatch: 'full'}
 ];
 
 @NgModule({
@@ -32,6 +47,9 @@ const routes: Routes = [
     AboutComponent,
     HabitDashboardComponent,
     AboutdetailComponent,
+    SystemCampingComponent,
+    SystemCampingInfoComponent,
+    SystemCampingItemComponent,
   ],
   imports: [
     BrowserModule, RouterModule.forRoot(routes), HttpClientModule, FormsModule, ReactiveFormsModule

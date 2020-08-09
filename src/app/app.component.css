@@ -1,0 +1,15 @@
+.header{
+  color: aliceblue;
+  background-color: #5858f1;
+  display: flex;
+}
+.header li{
+  text-decoration: none;
+  list-style: none;
+  width: 200px;
+
+}
+.header li a{
+  color: aliceblue;
+  text-decoration: none;
+}

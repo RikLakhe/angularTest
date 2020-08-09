@@ -19,12 +19,12 @@ export class HabitService {
   }
 
   getHabits(): Observable<Habit[]> {
-    return this.http.get<Habit[]>('http://localhost:3001/api/v1/habit');
+    return this.http.get<Habit[]>('https://lakhexpress.herokuapp.com/api/v1/habit');
   }
 
   addHabit(newHabit) {
     return this.http
-      .post<Habit[]>('http://localhost:3001/api/v1/habit', newHabit)
+      .post<Habit[]>('https://lakhexpress.herokuapp.com/api/v1/habit', newHabit)
       .pipe(tap(() => this.refetchSubject.next(null)));
   }
 }

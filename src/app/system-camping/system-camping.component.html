@@ -1,0 +1,18 @@
+<h1>Welcome to Camping Planner</h1>
+<nav  class="camping-nav">
+  <li class="camping-nav-li"><a class="camping-nav-a" [routerLink]="['/system','1']" routerLinkActive="camping-active">Combustion</a></li>
+  <li class="camping-nav-li"><a class="camping-nav-a" [routerLink]="['/system','2']" routerLinkActive="camping-active">Container</a></li>
+  <li class="camping-nav-li"><a class="camping-nav-a" [routerLink]="['/system','3']" routerLinkActive="camping-active">Cordage</a></li>
+  <li class="camping-nav-li"><a class="camping-nav-a" [routerLink]="['/system','4']" routerLinkActive="camping-active">Cover</a></li>
+  <li class="camping-nav-li"><a class="camping-nav-a" [routerLink]="['/system','5']" routerLinkActive="camping-active">Cutting</a></li>
+</nav>
+
+<h2>{{id}} : {{title.toUpperCase()}}</h2>
+<h5>{{desc.toUpperCase()}}</h5>
+
+
+<nav class="camping-nav-sub">
+  <li><a routerLink="info" routerLinkActive="camping-sub-active">INFO</a></li>
+  <li><a routerLink="item" routerLinkActive="camping-sub-active">ITEM</a></li>
+</nav>
+<router-outlet></router-outlet>
