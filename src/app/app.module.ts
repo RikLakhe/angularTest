@@ -16,6 +16,8 @@ import { AboutdetailComponent } from './aboutdetail/aboutdetail.component';
 import { SystemCampingComponent } from './system-camping/system-camping.component';
 import { SystemCampingInfoComponent } from './system-camping-info/system-camping-info.component';
 import { SystemCampingItemComponent } from './system-camping-item/system-camping-item.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -52,7 +54,13 @@ const routes: Routes = [
     SystemCampingItemComponent,
   ],
   imports: [
-    BrowserModule, RouterModule.forRoot(routes), HttpClientModule, FormsModule, ReactiveFormsModule
+    BrowserModule, 
+    RouterModule.forRoot(routes), 
+    HttpClientModule, 
+    FormsModule,
+     ReactiveFormsModule, 
+     BrowserAnimationsModule,
+     MaterialModule
   ],
   providers: [
     {provide: 'mail', useClass: MailService},

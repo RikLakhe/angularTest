@@ -1,7 +1,8 @@
 .header{
   color: aliceblue;
   background-color: #5858f1;
-  display: flex;
+  display: grid;
+  /*display: flex;*/
 }
 .header li{
   text-decoration: none;
@@ -12,4 +13,8 @@
 .header li a{
   color: aliceblue;
   text-decoration: none;
+}
+
+mat-sidenav-container{
+  height: 100%;
 }
