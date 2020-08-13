@@ -25,9 +25,9 @@
   <mat-card-content *ngIf="selectedLesson; else elseBlock">
     {{selectedLesson | json}}
   </mat-card-content>
-  <mat-card-content #elseBlock>
+  <ng-template #elseBlock>
     Select a lesson noob
-  </mat-card-content>
+  </ng-template>
   <mat-card-footer>
     build lakhe 0.0.0
   </mat-card-footer>

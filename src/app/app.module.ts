@@ -18,12 +18,15 @@ import { SystemCampingInfoComponent } from './system-camping-info/system-camping
 import { SystemCampingItemComponent } from './system-camping-item/system-camping-item.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
+import { CoursesComponent } from './courses/courses.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
+  {path: 'courses', component: CoursesComponent},
   {path: 'dashboard', component: HabitDashboardComponent},
   {path: 'about', component: AboutComponent},
   {path: 'about/:id', component: AboutdetailComponent},
+  {path: 'system', redirectTo: '/system/1', pathMatch: 'full'},
   {
     path: 'system/:id',
     component: SystemCampingComponent,
@@ -35,8 +38,7 @@ const routes: Routes = [
       component: SystemCampingItemComponent
     }]
   },
-  {path: '', redirectTo: '/system', pathMatch: 'full'},
-  {path: 'system', redirectTo: '/system/1', pathMatch: 'full'}
+  {path: '**', redirectTo: '/courses', pathMatch: 'full'}
 ];
 
 @NgModule({
@@ -52,13 +54,14 @@ const routes: Routes = [
     SystemCampingComponent,
     SystemCampingInfoComponent,
     SystemCampingItemComponent,
+    CoursesComponent,
   ],
   imports: [
-    BrowserModule, 
-    RouterModule.forRoot(routes), 
-    HttpClientModule, 
+    BrowserModule,
+    RouterModule.forRoot(routes),
+    HttpClientModule,
     FormsModule,
-     ReactiveFormsModule, 
+     ReactiveFormsModule,
      BrowserAnimationsModule,
      MaterialModule
   ],
