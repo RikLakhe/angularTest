@@ -1,5 +1,34 @@
 <mat-card>
-  Course works
-<h3>{{welcomeText}}</h3>
-  <pre>{{courseLessons | json}}</pre>
+  <h1 [style.color]="themeColor" >{{selectedLesson}}</h1>
+<!--  <pre>{{courseLessons | json}}</pre>-->
+
+  <mat-form-field class="example-full-width">
+    <mat-label>TEXT COLORING</mat-label>
+    <input matInput [(ngModel)]="themeColor" >
+
+      </mat-form-field>
+  <mat-button-toggle (click)="updateColor()">Update </mat-button-toggle>
+  <hr />
+  <hr />
+  <mat-list dense>
+    <mat-list-item *ngFor="let lesson of courseLessons" (click)="lessonSelector(lesson.title)">
+      <h3>{{lesson.title}}</h3>
+    </mat-list-item>
+  </mat-list>
+</mat-card>
+<br />
+<mat-card >
+  <mat-card-header>
+    <mat-card-title>DEBUG</mat-card-title>
+    <mat-card-subtitle>debug this system</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content *ngIf="selectedLesson; else elseBlock">
+    {{selectedLesson | json}}
+  </mat-card-content>
+  <mat-card-content #elseBlock>
+    Select a lesson noob
+  </mat-card-content>
+  <mat-card-footer>
+    build lakhe 0.0.0
+  </mat-card-footer>
 </mat-card>
