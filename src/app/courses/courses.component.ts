@@ -16,7 +16,7 @@ export class CoursesComponent implements OnInit {
 
   ngOnInit(): void {
     this.onCourseRestart();
-    this.courseService.findAll().subscribe(data=>this.courses = data)
+    this.loadCourse()
   }
 
   onCourseRestart = () => {
@@ -31,22 +31,25 @@ export class CoursesComponent implements OnInit {
     this.selectedCourse = empty;
   };
 
+  loadCourse = ()=>{
+    this.courseService.fetchAll().subscribe(data=>this.courses = data)
+  }
+
   onCourseSelect = (data) => {
     this.selectedCourse = data;
   };
 
   onCourseDelete = (data) => {
-    return this.courseService.delete(data.id).subscribe(data=>console.log(data))
-    // this.courseService.findAll().subscribe(data=> consol)
+    return this.courseService.delete(data.id).subscribe(data=>this.loadCourse())
   };
 
   onCourseAddUpdate = (data) => {
     if (data.id || data.id===0) {
-      this.courseService.update(data)
+      this.courseService.update(data).subscribe(data=>this.loadCourse())
     } else {
       let formData = {...data};
       formData.id = this.courses[this.courses.length-1].id + 1;
-      this.courseService.add(formData)
+      this.courseService.add(formData).subscribe(data=>this.loadCourse())
     }
   };
 }

@@ -69,7 +69,7 @@ const routes: Routes = [
   ],
   providers: [
     {provide: 'mail', useClass: MailService},
-    {provide: 'api', useValue: 'http://localhost:3000'},
+    {provide: 'api', useValue: 'https://lakhexpress.herokuapp.com/api/v1'},
     CoursesService,
     LessonsService,
   ],
