@@ -19,6 +19,8 @@ import { SystemCampingItemComponent } from './system-camping-item/system-camping
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { CoursesComponent } from './courses/courses.component';
+import {CoursesService} from './services/courses.service';
+import {LessonsService} from './services/lessons.service';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -67,7 +69,9 @@ const routes: Routes = [
   ],
   providers: [
     {provide: 'mail', useClass: MailService},
-    {provide: 'api', useValue: 'http://localhost:3000'}
+    {provide: 'api', useValue: 'http://localhost:3000'},
+    CoursesService,
+    LessonsService,
   ],
   bootstrap: [AppComponent]
 })

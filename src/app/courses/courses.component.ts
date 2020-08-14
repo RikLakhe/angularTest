@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
+import {CoursesService} from '../services/courses.service';
 
 @Component({
   selector: 'app-courses',
@@ -7,49 +8,15 @@ import {FormBuilder} from '@angular/forms';
   styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent implements OnInit {
-  courseForm: any;
   selectedCourse = undefined;
-  courses = [
-    {
-      id: 0,
-      title: 'Fundamental',
-      description: 'learn fundamental',
-      percentageComplete: 29,
-      favourite: false
-    },
-    {
-      id: 1,
-      title: 'core',
-      description: 'core',
-      percentageComplete: 11,
-      favourite: false
-    },
-    {
-      id: 2,
-      title: 'javascript',
-      description: 'learn js',
-      percentageComplete: 44,
-      favourite: true
-    },
-    {
-      id: 3,
-      title: 'typescript',
-      description: 'learn ts',
-      percentageComplete: 55,
-      favourite: true
-    }
-  ];
+  courses;
 
-  constructor(private formBuilder: FormBuilder) {
-    this.courseForm = this.formBuilder.group({
-      id: '',
-      title: '',
-      description: '',
-    });
+  constructor(private courseService: CoursesService) {
   }
 
   ngOnInit(): void {
     this.onCourseRestart();
+    this.courseService.findAll().subscribe(data=>this.courses = data)
   }
 
   onCourseRestart = () => {
@@ -66,31 +33,20 @@ export class CoursesComponent implements OnInit {
 
   onCourseSelect = (data) => {
     this.selectedCourse = data;
-    this.courseForm = this.formBuilder.group({
-      id: data.id,
-      title: data.title,
-      description: data.description
-    });
   };
 
   onCourseDelete = (data) => {
-    this.courses = this.courses.filter(item => item.id !== data.id);
+    return this.courseService.delete(data.id).subscribe(data=>console.log(data))
+    // this.courseService.findAll().subscribe(data=> consol)
   };
 
   onCourseAddUpdate = (data) => {
-    if (data.id) {
-      let temp = this.courses.map(course=>{
-        if(course.id === data.id){
-          return data
-        }else{ return course}
-      })
-
-      this.courses = temp;
+    if (data.id || data.id===0) {
+      this.courseService.update(data)
     } else {
       let formData = {...data};
       formData.id = this.courses[this.courses.length-1].id + 1;
-
-      this.courses.push(formData)
+      this.courseService.add(formData)
     }
   };
 }

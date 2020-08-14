@@ -7,9 +7,9 @@
     <mat-card-content>
       <mat-list>
         <mat-list-item *ngFor="let course of courses" (click)="onCourseSelect(course)">
-          <h3 mat-line>{{course.id +1 }}  : {{course.title}}</h3>
+          <h3 mat-line>{{course.id + 1 }}  : {{course.title}}</h3>
           <p mat-line>{{course.description}}</p>
-          <button mat-icon-button color="warn" (click)="onCourseDelete(course)">
+          <button mat-icon-button color="warn" (click)="onCourseDelete(course);$event.stopImmediatePropagation()">
             <mat-icon>delete</mat-icon>
           </button>
         </mat-list-item>
@@ -32,12 +32,19 @@
           <br/>
           <mat-form-field class="full-width">
             <mat-label>Description</mat-label>
-            <input matInput placeholder="Description" [(ngModel)]="selectedCourse.description" type="text" name="description">
+            <input matInput placeholder="Description" [(ngModel)]="selectedCourse.description" type="text"
+                   name="description">
           </mat-form-field>
+          <h4>{{selectedCourse.percentageComplete}} % completed</h4>
+          <mat-slider min="0" max="100" class="full-width"  thumbLabel [(ngModel)]="selectedCourse.percentageComplete" name="percentageComplete"></mat-slider>
+          <mat-checkbox class="example-margin"
+                        name="favourite"
+                        [(ngModel)]="selectedCourse.favourite"> Favourite Course ?</mat-checkbox>
 
         </mat-card-content>
         <mat-card-actions>
-          <button mat-raised-button [disabled]="form.invalid" color="primary" type="submit">{{form.value.id ? "Update":"Submit"}}</button>
+          <button mat-raised-button [disabled]="form.invalid" color="primary"
+                  type="submit">{{(form.value.id || form.value.id===0) ? "Update" : "Submit"}}</button>
           <button mat-raised-button color="warn" type="button" (click)="onCourseRestart()">Reset</button>
         </mat-card-actions>
       </form>
@@ -45,7 +52,8 @@
         Select a lesson noob
       </ng-template>
 
-      <pre>{{form.value | json}}</pre><pre>{{form.valid | json}}</pre>
+      <pre>{{form.value | json}}</pre>
+      <pre>{{form.valid | json}}</pre>
     </mat-card-content>
   </mat-card>
 </div>
