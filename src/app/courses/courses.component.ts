@@ -8,7 +8,7 @@ import {CoursesService} from '../services/courses.service';
   styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent implements OnInit {
-  @Input() selectedCourse;
+  @Input() course;
   @Input() courses;
 
   constructor(private courseService: CoursesService) {
@@ -28,7 +28,7 @@ export class CoursesComponent implements OnInit {
       favourite: false
     };
 
-    this.selectedCourse = empty;
+    this.course = empty;
     this.loadCourse();
   };
 
@@ -37,7 +37,7 @@ export class CoursesComponent implements OnInit {
   };
 
   onCourseSelect = (data) => {
-    this.selectedCourse = data;
+    this.course = data;
   };
 
   onCourseDelete = (data) => {

@@ -9,8 +9,3 @@ app-course-list{
 app-course-detail{
   width: 40%;
 }
-
-.debug{
-  margin:20px;
-  border: 1px solid black;
-}

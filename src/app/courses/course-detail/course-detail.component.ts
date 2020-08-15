@@ -6,14 +6,17 @@ import {EventEmitter} from '@angular/core';
   templateUrl: './course-detail.component.html',
   styleUrls: ['./course-detail.component.css']
 })
-export class CourseDetailComponent implements OnInit {
-  @Input() selectedCourse;
+export class CourseDetailComponent{
+  selectedCourse;
+  originalTitle;
+
   @Output() update = new EventEmitter()
   @Output() reset = new EventEmitter()
 
-  constructor() { }
-
-  ngOnInit(): void {
+  @Input() set course(value){
+    if(value){
+      this.selectedCourse = Object.assign({},value);
+      this.originalTitle = value.title
+    }
   }
-
 }

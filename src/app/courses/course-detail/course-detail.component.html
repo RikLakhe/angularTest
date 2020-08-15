@@ -1,6 +1,9 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>Courses Action</mat-card-title>
+    <mat-card-title>
+      <span *ngIf="originalTitle; else noSelected">{{originalTitle}}</span>
+      <ng-template #noSelected>Courses Action</ng-template>
+    </mat-card-title>
     <mat-card-subtitle>lets manage courses</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>

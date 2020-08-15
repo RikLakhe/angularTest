@@ -1,12 +1,8 @@
 <div class="courses">
-  <app-course-list [courses]="courses" (selected)="onCourseSelect($event)" (delete)="onCourseDelete($event)"></app-course-list>
+  <app-course-list [courses]="courses" (selected)="onCourseSelect($event)"
+                   (delete)="onCourseDelete($event)"></app-course-list>
 
-  <app-course-detail [selectedCourse]="selectedCourse" (update)="onCourseAddUpdate($event)" (reset)="onCourseRestart()"></app-course-detail>
-
+  <app-course-detail [course]="course" (update)="onCourseAddUpdate($event)"
+                     (reset)="onCourseRestart()"></app-course-detail>
 </div>
-
-
-<!--  <app-course-debug ></app-course-debug>-->
-
-
-
+<app-course-debug [courses]="courses"></app-course-debug>
