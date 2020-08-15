@@ -24,10 +24,15 @@ import {LessonsService} from './services/lessons.service';
 import { CourseListComponent } from './courses/course-list/course-list.component';
 import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
 import { CourseDebugComponent } from './courses/course-debug/course-debug.component';
+import { LessonsComponent } from './lessons/lessons.component';
+import { LessonListComponent } from './lessons/lesson-list/lesson-list.component';
+import { LessonDetailComponent } from './lessons/lesson-detail/lesson-detail.component';
+import { LessonDebugComponent } from './lessons/lesson-debug/lesson-debug.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'courses', component: CoursesComponent},
+  {path: 'lessons', component: LessonsComponent},
   {path: 'dashboard', component: HabitDashboardComponent},
   {path: 'about', component: AboutComponent},
   {path: 'about/:id', component: AboutdetailComponent},
@@ -63,6 +68,10 @@ const routes: Routes = [
     CourseListComponent,
     CourseDetailComponent,
     CourseDebugComponent,
+    LessonsComponent,
+    LessonListComponent,
+    LessonDetailComponent,
+    LessonDebugComponent,
   ],
   imports: [
     BrowserModule,

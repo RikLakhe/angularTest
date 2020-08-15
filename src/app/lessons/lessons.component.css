@@ -1,0 +1,14 @@
+app-lesson-debug{
+  width: 48%
+}
+app-lesson-detail{
+  width: 48%
+}
+
+.top{
+  display: flex;
+}
+
+app-lesson-list{
+  width: 100%;
+}

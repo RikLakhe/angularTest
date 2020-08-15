@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 import {LessonsService} from '../services/lessons.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-lessons',
+  templateUrl: './lessons.component.html',
+  styleUrls: ['./lessons.component.css']
 })
-export class HomeComponent implements OnInit {
+export class LessonsComponent implements OnInit {
   themeColor = 'magenta';
   selectedLesson = undefined;
   courseLessons = [];

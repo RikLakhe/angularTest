@@ -1,0 +1,6 @@
+<div class="top">
+  <app-lesson-detail [selectedLesson]="selectedLesson" (updateColor)="updateColor()"
+                     [themeColor]="themeColor"></app-lesson-detail>
+  <app-lesson-debug [selectedLesson]="selectedLesson"></app-lesson-debug>
+</div>
+<app-lesson-list [courseLessons]="courseLessons" (select)="lessonSelector($event)"></app-lesson-list>

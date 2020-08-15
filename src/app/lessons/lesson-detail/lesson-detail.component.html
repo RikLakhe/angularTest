@@ -1,0 +1,13 @@
+<mat-card>
+  <h1 [style.color]="themeColor" >
+    <span *ngIf="selectedLesson; else noSelected">{{selectedLesson.title}}</span>
+    <ng-template #noSelected>Select a lesson</ng-template>
+  </h1>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>TEXT COLORING</mat-label>
+    <input matInput [(ngModel)]="themeColor" >
+
+  </mat-form-field>
+  <mat-button-toggle (click)="updateColor.emit()">Update</mat-button-toggle>
+</mat-card>

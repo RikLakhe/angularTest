@@ -1,0 +1,15 @@
+<mat-card >
+  <mat-card-header>
+    <mat-card-title>DEBUG</mat-card-title>
+    <mat-card-subtitle>debug this system</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content *ngIf="selectedLesson; else elseBlock">
+    {{selectedLesson | json}}
+  </mat-card-content>
+  <ng-template #elseBlock>
+    Select a lesson noob
+  </ng-template>
+  <mat-card-footer>
+    build lakhe 0.0.0
+  </mat-card-footer>
+</mat-card>
