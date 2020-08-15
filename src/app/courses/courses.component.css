@@ -2,19 +2,12 @@
   display: flex;
 }
 
-.courses mat-card {
-  margin:10px;
-  width: 45%;
+app-course-list{
+  width: 60%
 }
 
-.example-form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
-}
-
-.full-width {
-  width: 100%;
+app-course-detail{
+  width: 40%;
 }
 
 .debug{

@@ -21,6 +21,9 @@ import { MaterialModule } from './material.module';
 import { CoursesComponent } from './courses/courses.component';
 import {CoursesService} from './services/courses.service';
 import {LessonsService} from './services/lessons.service';
+import { CourseListComponent } from './courses/course-list/course-list.component';
+import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
+import { CourseDebugComponent } from './courses/course-debug/course-debug.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -57,6 +60,9 @@ const routes: Routes = [
     SystemCampingInfoComponent,
     SystemCampingItemComponent,
     CoursesComponent,
+    CourseListComponent,
+    CourseDetailComponent,
+    CourseDebugComponent,
   ],
   imports: [
     BrowserModule,

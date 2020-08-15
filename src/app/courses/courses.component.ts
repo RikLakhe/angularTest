@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {CoursesService} from '../services/courses.service';
 
@@ -8,15 +8,15 @@ import {CoursesService} from '../services/courses.service';
   styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent implements OnInit {
-  selectedCourse = undefined;
-  courses;
+  @Input() selectedCourse;
+  @Input() courses;
 
   constructor(private courseService: CoursesService) {
   }
 
   ngOnInit(): void {
     this.onCourseRestart();
-    this.loadCourse()
+    this.loadCourse();
   }
 
   onCourseRestart = () => {
@@ -29,27 +29,34 @@ export class CoursesComponent implements OnInit {
     };
 
     this.selectedCourse = empty;
+    this.loadCourse();
   };
 
-  loadCourse = ()=>{
-    this.courseService.fetchAll().subscribe(data=>this.courses = data)
-  }
+  loadCourse = () => {
+    this.courseService.fetchAll().subscribe(data => this.courses = data);
+  };
 
   onCourseSelect = (data) => {
     this.selectedCourse = data;
   };
 
   onCourseDelete = (data) => {
-    return this.courseService.delete(data.id).subscribe(data=>this.loadCourse())
+    return this.courseService.delete(data.id).subscribe(data => this.loadCourse());
   };
 
   onCourseAddUpdate = (data) => {
-    if (data.id || data.id===0) {
-      this.courseService.update(data).subscribe(data=>this.loadCourse())
+    if (data.id || data.id === 0) {
+      this.courseService.update(data).subscribe(data => {
+        this.loadCourse();
+        this.onCourseRestart();
+      });
     } else {
       let formData = {...data};
-      formData.id = this.courses[this.courses.length-1].id + 1;
-      this.courseService.add(formData).subscribe(data=>this.loadCourse())
+      formData.id = this.courses[this.courses.length - 1].id + 1;
+      this.courseService.add(formData).subscribe(data => {
+        this.loadCourse();
+        this.onCourseRestart();
+      });
     }
   };
 }
